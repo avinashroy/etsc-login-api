@@ -21,7 +21,6 @@ public class LoginController {
     public Optional<EmpInfo> loginAuthentication(@RequestBody EmpLoginInfo empInfo) throws AuthenticationException {
         Optional<EmpInfo> empInfoOptional = empInfoRepo.findById(empInfo.getEmpId());
 
-        System.out.println(empInfo.getEmpPassword() + " and " + empInfoOptional.get().getEmpPassword());
         if (empInfoOptional.isPresent() && empInfoOptional.get().getEmpPassword().equals(empInfo.getEmpPassword()))
             return empInfoRepo.findById(empInfo.getEmpId());
 
